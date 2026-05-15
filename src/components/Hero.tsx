@@ -150,7 +150,7 @@ export function Hero() {
               alt="ППФ Дорстрой"
               className="h-28 md:h-36 w-auto object-contain"
               style={{
-                filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.7)) brightness(1.05) saturate(0.9)",
+                filter: "brightness(1.1) contrast(1.1) saturate(0.85)",
                 mixBlendMode: "screen",
               }}
             />

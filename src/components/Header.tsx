@@ -47,7 +47,7 @@ export function Header() {
             src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/3ffaa924-6355-454b-8e56-1b2a68ef6878.jpg"
             alt="ППФ Дорстрой"
             className="h-10 w-auto object-contain"
-            style={{ mixBlendMode: "screen", filter: "brightness(1.1) saturate(0.9)" }}
+            style={{ mixBlendMode: "screen", filter: "brightness(1.15) contrast(1.1) saturate(0.85)" }}
           />
         </a>
 
