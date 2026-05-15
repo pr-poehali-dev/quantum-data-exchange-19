@@ -1,62 +1,91 @@
 import { useState, useEffect, useRef } from "react"
-import { ArrowUpRight } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 
 const projects = [
   {
     id: 1,
-    title: "Резиденция Светлая",
-    category: "Жилой дом",
-    location: "Москва, Россия",
-    year: "2024",
-    image: "/images/hously-1.png",
+    title: "Комплексная уборка территории",
+    address: "ул. М.Горького, д.66",
+    client: "ООО Развитие Бизнеса",
+    category: "Благоустройство",
   },
   {
     id: 2,
-    title: "Павильон Стекло",
-    category: "Коммерческий объект",
-    location: "Санкт-Петербург, Россия",
-    year: "2023",
-    image: "/images/hously-2.png",
+    title: "Обслуживание территории аквапарка «ЛетоЛето»",
+    address: "ул. Щербакова, 87 (аквапарк + гостиница)",
+    client: "ООО ТК",
+    category: "Благоустройство",
   },
   {
     id: 3,
-    title: "Дом у моря",
-    category: "Жилой дом",
-    location: "Сочи, Россия",
-    year: "2023",
-    image: "/images/hously-3.png",
+    title: "Уборка прилегающей территории ТРЦ «Гудвин»",
+    address: "ул. М.Горького, д.70",
+    client: "ООО Развитие Бизнеса",
+    category: "Благоустройство",
   },
   {
     id: 4,
-    title: "Северный приют",
-    category: "Гостиничный комплекс",
-    location: "Казань, Россия",
-    year: "2024",
-    image: "/images/hously-4.png",
+    title: "Содержание автомобильных дорог «Лесопарк Затюменский»",
+    address: "г. Тюмень",
+    client: "АО ТОДЭП",
+    category: "Дорожные работы",
+  },
+  {
+    id: 5,
+    title: "Уборка территории ТЦ «Галерея Вояж»",
+    address: "ул. Герцена, д.94",
+    client: "ООО Развитие Бизнеса",
+    category: "Благоустройство",
+  },
+  {
+    id: 6,
+    title: "Механическая уборка снега со спецтехникой",
+    address: "ул. Судоремонтная, 2 корп.1",
+    client: "МАУ ДО СШ «ВОДНИК»",
+    category: "Зимнее содержание",
+  },
+  {
+    id: 7,
+    title: "Устройство асфальтового покрытия и песчаного основания",
+    address: "ул. Полевая, д.115Б",
+    client: 'ООО "СЗ «ИНКО И К»"',
+    category: "Асфальтирование",
+  },
+  {
+    id: 8,
+    title: "Демонтаж асфальтобетонного покрытия",
+    address: "ул. Бориса Прудаева, д.4, стр.1",
+    client: "ООО СЗ Клевер Строй",
+    category: "Дорожные работы",
   },
 ]
 
+const categoryColors: Record<string, string> = {
+  "Благоустройство": "#27ae60",
+  "Дорожные работы": "#0A2B4E",
+  "Зимнее содержание": "#2980b9",
+  "Асфальтирование": "#E67E22",
+}
+
 export function Projects() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
-  const [revealedImages, setRevealedImages] = useState<Set<number>>(new Set())
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set())
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute("data-index"))
           if (entry.isIntersecting) {
-            const index = imageRefs.current.indexOf(entry.target as HTMLDivElement)
-            if (index !== -1) {
-              setRevealedImages((prev) => new Set(prev).add(projects[index].id))
-            }
+            setVisibleItems((prev) => new Set(prev).add(index))
           }
         })
       },
-      { threshold: 0.2 },
+      { threshold: 0.1 },
     )
 
-    imageRefs.current.forEach((ref) => {
+    itemRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref)
     })
 
@@ -68,53 +97,62 @@ export function Projects() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Избранные работы</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Наши проекты</h2>
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Выполненные работы</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">Наши проекты</h2>
           </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            Смотреть все проекты
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          <p className="text-muted-foreground text-sm max-w-xs">
+            Работаем с крупными коммерческими объектами, торговыми центрами и муниципальными заказчиками
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+        <div className="space-y-3">
           {projects.map((project, index) => (
-            <article
+            <div
               key={project.id}
-              className="group cursor-pointer"
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
+              ref={(el) => { itemRefs.current[index] = el }}
+              data-index={index}
+              className={`border border-border rounded-lg overflow-hidden transition-all duration-500 ${
+                visibleItems.has(index) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: `${index * 60}ms` }}
             >
-              <div ref={(el) => (imageRefs.current[index] = el)} className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className={`w-full h-full object-cover transition-transform duration-700 ${
-                    hoveredId === project.id ? "scale-105" : "scale-100"
+              <button
+                className="w-full px-6 py-5 flex items-center justify-between gap-4 text-left bg-white hover:bg-secondary/30 transition-colors duration-200"
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              >
+                <div className="flex items-center gap-4 min-w-0">
+                  <span
+                    className="text-xs font-semibold px-3 py-1 rounded-full text-white whitespace-nowrap flex-shrink-0"
+                    style={{ background: categoryColors[project.category] || "#0A2B4E" }}
+                  >
+                    {project.category}
+                  </span>
+                  <span className="text-base font-medium text-foreground truncate">{project.title}</span>
+                </div>
+                <ChevronDown
+                  className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === index ? "rotate-180" : "rotate-0"
                   }`}
                 />
-                <div
-                  className="absolute inset-0 bg-primary origin-top"
-                  style={{
-                    transform: revealedImages.has(project.id) ? "scaleY(0)" : "scaleY(1)",
-                    transition: "transform 1.5s cubic-bezier(0.76, 0, 0.24, 1)",
-                  }}
-                />
-              </div>
+              </button>
 
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-medium mb-2 group-hover:underline underline-offset-4">{project.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {project.category} · {project.location}
-                  </p>
+              <div
+                className={`overflow-hidden transition-all duration-400 ease-in-out ${
+                  openIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="px-6 py-4 bg-secondary/20 border-t border-border grid md:grid-cols-2 gap-3">
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Адрес объекта</p>
+                    <p className="text-sm font-medium">{project.address}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Заказчик</p>
+                    <p className="text-sm font-medium">{project.client}</p>
+                  </div>
                 </div>
-                <span className="text-muted-foreground/60 text-sm">{project.year}</span>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>

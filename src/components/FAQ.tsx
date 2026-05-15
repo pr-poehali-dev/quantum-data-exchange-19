@@ -1,80 +1,81 @@
 import { useState } from "react"
-import { Plus } from "lucide-react"
 
-const faqs = [
+const vacancies = [
   {
-    question: "В каких регионах вы работаете?",
-    answer:
-      "Наша студия базируется в Москве, но мы реализуем проекты по всей России и в ближнем зарубежье. Мы верим в создание архитектуры, которая откликается на свой конкретный контекст и сообщество.",
+    title: "Водитель самосвала",
+    description: "Перевозка строительных материалов, грунта и щебня. Требуется опыт работы на самосвале от 2 лет, категория С/Е.",
   },
   {
-    question: "Сколько времени занимает проектирование?",
-    answer:
-      "Сроки зависят от масштаба и сложности проекта. Типичный жилой объект занимает от 6 до 12 месяцев от первоначальной концепции до проектной документации. Мы тесно работаем с клиентами, чтобы установить реалистичные сроки для продуманной разработки дизайна.",
+    title: "Дорожный мастер",
+    description: "Контроль качества дорожно-строительных работ, организация работы бригады. Профильное образование обязательно.",
   },
   {
-    question: "Как вы подходите к экологичному проектированию?",
-    answer:
-      "Устойчивое развитие - неотъемлемая часть нашей практики, а не дополнительная опция. Мы отдаем приоритет пассивным стратегиям проектирования, выбору материалов, энергоэффективности и долговечности. Каждый проект разрабатывается с минимальным воздействием на окружающую среду при максимальном комфорте и связи с природой.",
+    title: "Диспетчер транспортного отдела",
+    description: "Организация и координация транспортных перевозок, работа с путевыми листами, взаимодействие с водителями.",
   },
   {
-    question: "Какие услуги вы предоставляете?",
-    answer:
-      "Мы предоставляем полный спектр архитектурных услуг, включая мастер-планирование, эскизное проектирование, разработку дизайна, подготовку проектной документации и авторский надзор. Мы можем адаптировать наши услуги под конкретные потребности вашего проекта.",
+    title: "Инженер ПТО",
+    description: "Подготовка технической документации, контроль выполнения объёмов работ, взаимодействие с заказчиками.",
   },
   {
-    question: "Работаете ли вы с существующими зданиями?",
-    answer:
-      "Безусловно. Нам нравится сложность проектов адаптивного повторного использования и реконструкции. Будь то историческая реставрация или современная пристройка, мы подходим к существующим строениям с уважением, привнося их в диалог с современной жизнью.",
-  },
-  {
-    question: "Как начать сотрудничество?",
-    answer:
-      "Начните с первичной консультации, где мы обсудим ваше видение, участок, бюджет и сроки. Это поможет нам понять, подходим ли мы для вашего проекта. После этого мы подготовим индивидуальное техническое задание и коммерческое предложение.",
+    title: "Машинист укладчика асфальтобетона",
+    description: "Управление асфальтоукладчиком, соблюдение технологии укладки. Требуется удостоверение машиниста.",
   },
 ]
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [appliedIndex, setAppliedIndex] = useState<number | null>(null)
 
-  const toggleQuestion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
+  const handleApply = (index: number, title: string) => {
+    setAppliedIndex(index)
+    setTimeout(() => setAppliedIndex(null), 3000)
   }
 
   return (
-    <section id="faq" className="py-20 md:py-29">
+    <section id="vacancies" className="py-20 md:py-29">
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-3xl mb-16">
-          <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Вопросы</p>
-          <h2 className="text-6xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-7xl">
-            Частые вопросы
+          <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Работа у нас</p>
+          <h2 className="text-6xl font-bold leading-[1.15] tracking-tight mb-6 text-balance lg:text-7xl">
+            Вакансии
           </h2>
+          <p className="text-muted-foreground text-lg">
+            Мы ищем профессионалов дорожно-строительной отрасли. Отдел кадров: <a href="tel:+73452688060" className="font-medium hover:underline" style={{ color: "#0A2B4E" }}>+7(3452) 688-060</a>
+          </p>
         </div>
 
-        <div>
-          {faqs.map((faq, index) => (
-            <div key={index} className="border-b border-border">
-              <button
-                onClick={() => toggleQuestion(index)}
-                className="w-full py-6 flex items-start justify-between gap-6 text-left group"
-              >
-                <span className="text-lg font-medium text-foreground transition-colors group-hover:text-foreground/70">
-                  {faq.question}
-                </span>
-                <Plus
-                  className={`w-6 h-6 text-foreground flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-45" : "rotate-0"
-                  }`}
-                  strokeWidth={1.5}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                }`}
-              >
-                <p className="text-muted-foreground leading-relaxed pb-6 pr-12">{faq.answer}</p>
+        <div className="space-y-4">
+          {vacancies.map((vacancy, index) => (
+            <div
+              key={index}
+              className="border border-border rounded-lg p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold mb-2">{vacancy.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{vacancy.description}</p>
               </div>
+
+              <button
+                onClick={() => handleApply(index, vacancy.title)}
+                className="flex-shrink-0 px-6 py-3 text-sm font-semibold transition-all duration-300 rounded-lg"
+                style={
+                  appliedIndex === index
+                    ? { background: "#27ae60", color: "white" }
+                    : { background: "#E67E22", color: "white" }
+                }
+                onMouseEnter={(e) => {
+                  if (appliedIndex !== index) {
+                    e.currentTarget.style.background = "#d35400"
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (appliedIndex !== index) {
+                    e.currentTarget.style.background = "#E67E22"
+                  }
+                }}
+              >
+                {appliedIndex === index ? "✓ Заявка отправлена" : "Откликнуться"}
+              </button>
             </div>
           ))}
         </div>

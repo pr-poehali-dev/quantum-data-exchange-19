@@ -119,12 +119,24 @@ export function Hero() {
   return (
     <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hously-background.png"
-          alt="Минималистичный архитектурный интерьер"
-          className="w-full h-full object-cover object-center"
+        <div
+          className="w-full h-full"
+          style={{
+            background: "linear-gradient(135deg, #0A2B4E 0%, #0d3a68 40%, #1a4a7a 70%, #0A2B4E 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
         />
       </div>
+
+      <div
+        className="absolute inset-0 z-0"
+        style={{ background: "rgba(10, 43, 78, 0.6)" }}
+      />
 
       <div
         ref={contentRef}
@@ -137,30 +149,40 @@ export function Hero() {
         }}
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-0">{"Архитектурная студия"}</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-center mb-4" style={{ color: "#E67E22" }}>
+            Строительство и ремонт дорог
+          </p>
 
           <h1
             ref={titleRef}
-            className="text-7xl font-medium text-balance text-center text-white mb-0 tracking-tight leading-[0.9] lg:text-8xl"
+            className="text-7xl font-bold text-balance text-center text-white mb-6 tracking-tight leading-[0.9] lg:text-8xl"
           >
-            {"Создаем пространства"}
-            <br />
-            <span className="text-orange-200">{"для жизни"}</span>
+            {"ППФ «Дорстрой»"}
           </h1>
-        </div>
-      </div>
 
-      <div className="absolute inset-0 z-20 pointer-events-none">
-        <img
-          src="/images/hously-foreground.png"
-          alt="Мраморная кухонная столешница"
-          className="w-full h-full object-cover object-center"
-        />
+          <p className="text-center text-white/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+            Благоустройство территорий · Укладка полотна · Спецтехника
+          </p>
+
+          <p className="text-center text-white/60 text-sm tracking-widest uppercase mb-12">
+            Успешно работаем на рынке более 20 лет
+          </p>
+
+          <div className="flex justify-center">
+            <a
+              href="#services"
+              className="inline-flex items-center gap-3 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-105"
+              style={{ background: "#E67E22", color: "#fff" }}
+            >
+              Узнать цены
+            </a>
+          </div>
+        </div>
       </div>
 
       {animationComplete && (
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-30">
-          <ArrowDown className="w-5 h-5 text-muted-foreground" />
+          <ArrowDown className="w-5 h-5 text-white/60" />
         </div>
       )}
     </section>

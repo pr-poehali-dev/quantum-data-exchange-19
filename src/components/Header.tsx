@@ -22,32 +22,41 @@ export function Header() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
+  const navItems = [
+    { label: "Главная", href: "#hero" },
+    { label: "О компании", href: "#about" },
+    { label: "Услуги", href: "#services" },
+    { label: "Проекты", href: "#projects" },
+    { label: "Вакансии", href: "#vacancies" },
+    { label: "Контакты", href: "#contact" },
+  ]
+
   return (
     <header
       className={cn(
         "fixed z-50 transition-all duration-500 my-0 py-0 rounded-none",
         scrolled || mobileMenuOpen
-          ? "bg-primary backdrop-blur-md py-4 top-4 left-4 right-4 rounded-2xl"
+          ? "backdrop-blur-md py-4 top-4 left-4 right-4 rounded-2xl"
           : "bg-transparent py-4 top-0 left-0 right-0",
       )}
+      style={scrolled || mobileMenuOpen ? { background: "#0A2B4E" } : {}}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between md:px-[24]">
         <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
-          <img src="/images/hously-logo.svg" alt="Пространство" width={120} height={32} className="w-auto h-6" />
+          <span className="text-white font-bold text-xl tracking-tight">
+            ППФ <span style={{ color: "#E67E22" }}>«Дорстрой»</span>
+          </span>
         </a>
 
-        <ul className="hidden md:flex items-center gap-10 text-sm tracking-wide">
-          {[
-            { label: "Главная", href: "#hero" },
-            { label: "Философия", href: "#about" },
-            { label: "Проекты", href: "#projects" },
-            { label: "Услуги", href: "#services" },
-            { label: "Вопросы", href: "#faq" },
-          ].map((item) => (
+        <ul className="hidden md:flex items-center gap-8 text-sm tracking-wide">
+          {navItems.map((item) => (
             <li key={item.label}>
               <a
                 href={item.href}
-                className="hover:text-[rgb(251,146,60)] transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 hover:after:w-full after:bg-[rgb(251,146,60)] after:transition-all after:duration-300 text-white"
+                className="transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 hover:after:w-full after:transition-all after:duration-300 text-white"
+                style={{ "--hover-color": "#E67E22" } as React.CSSProperties}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#E67E22")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
               >
                 {item.label}
               </a>
@@ -56,15 +65,18 @@ export function Header() {
         </ul>
 
         <a
-          href="#contact"
-          className={cn(
-            "hidden md:inline-flex items-center gap-2 text-sm px-5 py-2.5 transition-all duration-300",
-            scrolled
-              ? "bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white"
-              : "bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white",
-          )}
+          href="tel:+73452688060"
+          className="hidden md:inline-flex items-center gap-2 text-sm px-5 py-2.5 transition-all duration-300 text-white border border-white/30 hover:border-orange-400"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = "#E67E22"
+            e.currentTarget.style.borderColor = "#E67E22"
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = "transparent"
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)"
+          }}
         >
-          Связаться
+          +7(3452) 688-060
         </a>
 
         <button
@@ -94,17 +106,14 @@ export function Header() {
       >
         <div className="container mx-auto px-6">
           <ul className="flex flex-col gap-6 mb-8">
-            {[
-              { label: "Главная", href: "#hero" },
-              { label: "Философия", href: "#about" },
-              { label: "Проекты", href: "#projects" },
-              { label: "Услуги", href: "#services" },
-              { label: "Вопросы", href: "#faq" },
-            ].map((item) => (
+            {navItems.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
-                  className="hover:text-[rgb(251,146,60)] transition-colors duration-300 text-white text-4xl font-light block"
+                  className="transition-colors duration-300 text-white text-3xl font-light block"
+                  style={{}}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#E67E22")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
                   onClick={closeMobileMenu}
                 >
                   {item.label}
@@ -114,11 +123,11 @@ export function Header() {
           </ul>
 
           <a
-            href="#contact"
-            className="inline-flex items-center justify-center gap-2 text-sm px-5 py-2.5 bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white transition-all duration-300 mb-4"
+            href="tel:+73452688060"
+            className="inline-flex items-center justify-center gap-2 text-sm px-5 py-2.5 text-white border border-white/30 transition-all duration-300 mb-4"
             onClick={closeMobileMenu}
           >
-            Связаться
+            +7(3452) 688-060
           </a>
         </div>
       </div>
