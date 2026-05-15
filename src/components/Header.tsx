@@ -43,9 +43,12 @@ export function Header() {
     >
       <nav className="container mx-auto px-6 flex items-center justify-between md:px-[24]">
         <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
-          <span className="text-white font-bold text-xl tracking-tight">
-            ППФ <span style={{ color: "#E67E22" }}>«Дорстрой»</span>
-          </span>
+          <img
+            src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/3ffaa924-6355-454b-8e56-1b2a68ef6878.jpg"
+            alt="ППФ Дорстрой"
+            className="h-10 w-auto object-contain"
+            style={{ mixBlendMode: "screen", filter: "brightness(1.1) saturate(0.9)" }}
+          />
         </a>
 
         <ul className="hidden md:flex items-center gap-8 text-sm tracking-wide">

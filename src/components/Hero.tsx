@@ -118,24 +118,18 @@ export function Hero() {
 
   return (
     <section id="hero" ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Фоновое фото */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full"
-          style={{
-            background: "linear-gradient(135deg, #0A2B4E 0%, #0d3a68 40%, #1a4a7a 70%, #0A2B4E 100%)",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
+        <img
+          src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/files/c20da800-0bed-4f64-8900-c456fe8c0257.jpg"
+          alt="Дорожно-строительные работы"
+          className="w-full h-full object-cover object-center"
         />
       </div>
-
+      {/* Тёмный оверлей для читаемости текста */}
       <div
-        className="absolute inset-0 z-0"
-        style={{ background: "rgba(10, 43, 78, 0.6)" }}
+        className="absolute inset-0 z-1"
+        style={{ background: "linear-gradient(to bottom, rgba(5,20,40,0.78) 0%, rgba(5,20,40,0.65) 60%, rgba(5,20,40,0.85) 100%)" }}
       />
 
       <div
@@ -150,44 +144,37 @@ export function Hero() {
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
           {/* Логотип */}
-          <div className="flex justify-center mb-6">
-            <div className="flex items-center gap-3">
-              <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "#E67E22" }}
-              >
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 24 L16 8 L28 24" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                  <path d="M2 24 L30 24" stroke="white" strokeWidth="3" strokeLinecap="round"/>
-                  <path d="M10 24 L10 18 L22 18 L22 24" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                </svg>
-              </div>
-              <div className="text-left">
-                <p className="text-white/50 text-xs tracking-[0.2em] uppercase leading-tight">ППФ</p>
-                <p className="text-white font-black text-2xl tracking-tight leading-tight" style={{ fontFamily: "'Inter', sans-serif" }}>ДОРСТРОЙ</p>
-              </div>
-            </div>
+          <div className="flex justify-center mb-4">
+            <img
+              src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/3ffaa924-6355-454b-8e56-1b2a68ef6878.jpg"
+              alt="ППФ Дорстрой"
+              className="h-28 md:h-36 w-auto object-contain"
+              style={{
+                filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.7)) brightness(1.05) saturate(0.9)",
+                mixBlendMode: "screen",
+              }}
+            />
           </div>
 
-          <p className="text-xs tracking-[0.4em] uppercase text-center mb-5 font-medium" style={{ color: "#E67E22" }}>
+          <p className="text-xs tracking-[0.4em] uppercase text-center mb-5 font-semibold" style={{ color: "#E67E22" }}>
             Строительство и ремонт дорог · г. Тюмень
           </p>
 
           <h1
             ref={titleRef}
             className="text-balance text-center text-white mb-5 tracking-tight"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)", fontWeight: 800, lineHeight: 1.05, letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(2.4rem, 6.5vw, 5rem)", fontWeight: 900, lineHeight: 1.08, letterSpacing: "-0.02em", textShadow: "0 2px 20px rgba(0,0,0,0.5)" }}
           >
             Строим дороги,
             <br />
             <span style={{ color: "#E67E22" }}>которым доверяют</span>
           </h1>
 
-          <p className="text-center text-white/75 mb-4 max-w-xl mx-auto" style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)", lineHeight: 1.6 }}>
+          <p className="text-center text-white mb-4 max-w-xl mx-auto font-medium" style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", lineHeight: 1.6, textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}>
             Благоустройство территорий · Укладка полотна · Спецтехника
           </p>
 
-          <p className="text-center font-medium mb-10" style={{ color: "#E67E22", fontSize: "0.85rem", letterSpacing: "0.15em" }}>
+          <p className="text-center font-bold mb-10" style={{ color: "#E67E22", fontSize: "0.82rem", letterSpacing: "0.2em" }}>
             БОЛЕЕ 20 ЛЕТ НА РЫНКЕ
           </p>
 

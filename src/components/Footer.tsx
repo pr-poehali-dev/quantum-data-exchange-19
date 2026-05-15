@@ -5,9 +5,11 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           <div className="md:col-span-2">
             <a href="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold" style={{ color: "#0A2B4E" }}>
-                ППФ <span style={{ color: "#E67E22" }}>«Дорстрой»</span>
-              </span>
+              <img
+                src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/3ffaa924-6355-454b-8e56-1b2a68ef6878.jpg"
+                alt="ППФ Дорстрой"
+                className="h-16 w-auto object-contain"
+              />
             </a>
             <p className="text-muted-foreground leading-relaxed max-w-sm text-sm">
               Строительство и ремонт дорог, благоустройство территорий в Тюмени и Тюменской области. Работаем с 2004 года.
