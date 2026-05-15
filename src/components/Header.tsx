@@ -44,10 +44,9 @@ export function Header() {
       <nav className="container mx-auto px-6 flex items-center justify-between md:px-[24]">
         <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
           <img
-            src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/3ffaa924-6355-454b-8e56-1b2a68ef6878.jpg"
+            src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/1bc29ff7-1ae2-4831-9f20-0f55f9f9db3f.png"
             alt="ППФ Дорстрой"
             className="h-10 w-auto object-contain"
-            style={{ mixBlendMode: "screen", filter: "brightness(1.15) contrast(1.1) saturate(0.85)" }}
           />
         </a>
 
