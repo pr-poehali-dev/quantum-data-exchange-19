@@ -6,13 +6,13 @@ export function Footer() {
           <div className="md:col-span-2">
             <a href="/" className="inline-block mb-4">
               <img
-                src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/ced2e072-c8b4-40b8-881a-fbc406b983cf.png"
+                src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/f429d1fd-ab39-407b-abbb-a5526a9b2054.png"
                 alt="ППФ Дорстрой"
                 className="h-16 w-auto object-contain"
               />
             </a>
             <p className="text-muted-foreground leading-relaxed max-w-sm text-sm">
-              Строительство и ремонт дорог, благоустройство территорий в Тюмени и Тюменской области. Работаем с 2004 года.
+              Строительство и ремонт дорог, благоустройство территорий в Тюмени и Тюменской области. Работаем с 2006 года.
             </p>
           </div>
 

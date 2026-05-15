@@ -44,7 +44,7 @@ export function Header() {
       <nav className="container mx-auto px-6 flex items-center justify-between md:px-[24]">
         <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
           <img
-            src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/ced2e072-c8b4-40b8-881a-fbc406b983cf.png"
+            src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/f429d1fd-ab39-407b-abbb-a5526a9b2054.png"
             alt="ППФ Дорстрой"
             className="h-10 w-auto object-contain"
           />
