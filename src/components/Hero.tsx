@@ -149,30 +149,53 @@ export function Hero() {
         }}
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center mb-4" style={{ color: "#E67E22" }}>
-            Строительство и ремонт дорог
+          {/* Логотип */}
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "#E67E22" }}
+              >
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 24 L16 8 L28 24" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                  <path d="M2 24 L30 24" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+                  <path d="M10 24 L10 18 L22 18 L22 24" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                </svg>
+              </div>
+              <div className="text-left">
+                <p className="text-white/50 text-xs tracking-[0.2em] uppercase leading-tight">ППФ</p>
+                <p className="text-white font-black text-2xl tracking-tight leading-tight" style={{ fontFamily: "'Inter', sans-serif" }}>ДОРСТРОЙ</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-xs tracking-[0.4em] uppercase text-center mb-5 font-medium" style={{ color: "#E67E22" }}>
+            Строительство и ремонт дорог · г. Тюмень
           </p>
 
           <h1
             ref={titleRef}
-            className="text-7xl font-bold text-balance text-center text-white mb-6 tracking-tight leading-[0.9] lg:text-8xl"
+            className="text-balance text-center text-white mb-5 tracking-tight"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 5.5rem)", fontWeight: 800, lineHeight: 1.05, letterSpacing: "-0.02em" }}
           >
-            {"ППФ «Дорстрой»"}
+            Строим дороги,
+            <br />
+            <span style={{ color: "#E67E22" }}>которым доверяют</span>
           </h1>
 
-          <p className="text-center text-white/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-center text-white/75 mb-4 max-w-xl mx-auto" style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)", lineHeight: 1.6 }}>
             Благоустройство территорий · Укладка полотна · Спецтехника
           </p>
 
-          <p className="text-center text-white/60 text-sm tracking-widest uppercase mb-12">
-            Успешно работаем на рынке более 20 лет
+          <p className="text-center font-medium mb-10" style={{ color: "#E67E22", fontSize: "0.85rem", letterSpacing: "0.15em" }}>
+            БОЛЕЕ 20 ЛЕТ НА РЫНКЕ
           </p>
 
           <div className="flex justify-center">
             <a
               href="#services"
-              className="inline-flex items-center gap-3 px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-105"
-              style={{ background: "#E67E22", color: "#fff" }}
+              className="inline-flex items-center gap-3 px-8 py-4 font-semibold tracking-wide transition-all duration-300 hover:scale-105"
+              style={{ background: "#E67E22", color: "#fff", fontSize: "0.95rem" }}
             >
               Узнать цены
             </a>
