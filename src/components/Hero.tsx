@@ -146,7 +146,7 @@ export function Hero() {
           {/* Логотип */}
           <div className="flex justify-center mb-4">
             <img
-              src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/f429d1fd-ab39-407b-abbb-a5526a9b2054.png"
+              src="https://cdn.poehali.dev/projects/efdd04af-3974-416b-8659-57d3122a3158/bucket/ced2e072-c8b4-40b8-881a-fbc406b983cf.png"
               alt="ППФ Дорстрой"
               className="h-28 md:h-36 w-auto object-contain"
               style={{ filter: "drop-shadow(0 2px 16px rgba(0,0,0,0.5))" }}
